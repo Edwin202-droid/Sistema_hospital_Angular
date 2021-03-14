@@ -14,6 +14,9 @@ import { APP_ROUTES } from './app-routing.module';
 
 import { FormsModule } from '@angular/forms';
 
+//servicio
+import { ServiceModule } from './services/service.module';
+
 
 
 @NgModule({
@@ -37,7 +40,9 @@ import { FormsModule } from '@angular/forms';
     APP_ROUTES,
     //importando los modulos para que funcionen el app.module
     PagesModule,
-    FormsModule
+    FormsModule,
+    //modulo de servicios
+    ServiceModule
   ],
   providers: [],
   bootstrap: [AppComponent]
