@@ -12,7 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './login/register.component';
 import { APP_ROUTES } from './app-routing.module';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //servicio
 import { ServiceModule } from './services/service.module';
@@ -41,6 +41,7 @@ import { ServiceModule } from './services/service.module';
     //importando los modulos para que funcionen el app.module
     PagesModule,
     FormsModule,
+    ReactiveFormsModule,
     //modulo de servicios
     ServiceModule
   ],
