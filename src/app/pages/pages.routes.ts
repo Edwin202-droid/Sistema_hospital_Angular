@@ -11,6 +11,7 @@ import { RxjsComponent } from './rxjs/rxjs.component';
 
 import { LoginGuardGuard } from '../services/services.index';
 import { ProfileComponent } from './profile/profile.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 const pagesRoutes: Routes = [
     {
@@ -26,8 +27,9 @@ const pagesRoutes: Routes = [
             {path:'rxjs',component:RxjsComponent, data:{ titulo: 'RxJs' }},
             //ingresando el account-settings
             {path:'account-settings',component:AccountSettingsComponent, data:{ titulo: 'Ajustes de cuenta' }},
-
+            //Mantenimientos
             {path: 'perfil', component:ProfileComponent, data: {titulo: 'Perfil de usuario'} },
+            {path: 'usuarios', component: UsuariosComponent, data: {titulo: 'Mantenimiento de Usuarios'}},
             {path:'', redirectTo: '/dashboard', pathMatch: 'full'},
         ]
     }

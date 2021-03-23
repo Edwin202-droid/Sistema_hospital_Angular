@@ -117,9 +117,10 @@ export class UsuarioService {
           .pipe(
             map((resp:any)=>{
 
+              if(usuario._id === this.usuario._id){
+                this.guardarStorage( resp.usuario._id , this.token, resp.usuario);
+              }
               //let usuarioDB: Usuario = resp.usuario;
-
-              this.guardarStorage( resp.usuario._id , this.token, resp.usuario);
               Swal.fire('Usuario actualizado',usuario.nombre,'success');
 
               return true;
@@ -140,4 +141,38 @@ export class UsuarioService {
 
         });
   }
+
+  cargarUsuarios(desde:number=0){
+    let url= URL_SERVICIOS + '/usuario?desde=' + desde;
+
+    return this.http.get(url);
+
+  }
+
+  buscarUsuarios(termino:string){
+
+    let url= URL_SERVICIOS + '/busqueda/coleccion/usuarios/' + termino;
+
+    return this.http.get(url).pipe(
+      map(
+        //solo trae a los usuarios
+        (resp:any)=>resp.usuarios
+      )
+    );
+  }
+
+  borrarUsuario(id:string){
+
+    let url = URL_SERVICIOS + '/usuario/' +id;
+    url += '?token=' + this.token;
+
+    return this.http.delete(url).pipe(
+      map(resp=>{
+        Swal.fire('Borrado','El usuario fue borrado','success');
+        return true;
+      })
+    );
+
+  }
+
 }
