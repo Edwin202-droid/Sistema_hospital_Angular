@@ -10,6 +10,7 @@ import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 
 import { LoginGuardGuard } from '../services/services.index';
+import { ProfileComponent } from './profile/profile.component';
 
 const pagesRoutes: Routes = [
     {
@@ -25,6 +26,8 @@ const pagesRoutes: Routes = [
             {path:'rxjs',component:RxjsComponent, data:{ titulo: 'RxJs' }},
             //ingresando el account-settings
             {path:'account-settings',component:AccountSettingsComponent, data:{ titulo: 'Ajustes de cuenta' }},
+
+            {path: 'perfil', component:ProfileComponent, data: {titulo: 'Perfil de usuario'} },
             {path:'', redirectTo: '/dashboard', pathMatch: 'full'},
         ]
     }
