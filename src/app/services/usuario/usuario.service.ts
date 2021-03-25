@@ -156,7 +156,7 @@ export class UsuarioService {
     return this.http.get(url).pipe(
       map(
         //solo trae a los usuarios
-        (resp:any)=>resp.usuarios
+        (resp:any)=>resp.usuarios 
       )
     );
   }

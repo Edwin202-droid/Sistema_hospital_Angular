@@ -22,7 +22,7 @@ export class UsuariosComponent implements OnInit {
   constructor(public _usuarioService:UsuarioService,
               public _modalUploadService:ModalUploadService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
     //
     this.cargarUsuarios(); 
 
@@ -45,7 +45,7 @@ export class UsuariosComponent implements OnInit {
               this.usuarios=resp.usuarios;
               //termino la carga
               this.cargando=false;
-            });
+            });                                         
   }
 
   cambiarDesde(valor:number){ 
