@@ -9,7 +9,7 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 
-import { AdminGuard, LoginGuardGuard } from '../services/services.index';
+import { AdminGuard, LoginGuardGuard, VerificatokenGuard } from '../services/services.index';
 import { ProfileComponent } from './profile/profile.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { HospitalesComponent } from './hospitales/hospitales.component';
@@ -25,7 +25,8 @@ const pagesRoutes: Routes = [
         //protegiendo ruta
         canActivate: [LoginGuardGuard],
         children:[
-            {path: 'dashboard',component: DashboardComponent, data:{ titulo: 'Dashboard' }},
+            //Guard de Renovacion de token
+            {path: 'dashboard', canActivate:[VerificatokenGuard],component: DashboardComponent, data:{ titulo: 'Dashboard' }},
             {path:'progress',component:ProgressComponent, data:{ titulo: 'ProgressBar' }},
             {path:'graficas1',component:Graficas1Component, data:{ titulo: 'Grafica #1' }},
             {path:'promesas',component:PromesasComponent, data:{ titulo: 'Promesas' }},

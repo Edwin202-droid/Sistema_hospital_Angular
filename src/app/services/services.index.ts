@@ -1,3 +1,4 @@
+export { VerificatokenGuard } from "./guards/verificatoken.guard";
 
 
 export { MedicoService } from "./medico/medico.service";

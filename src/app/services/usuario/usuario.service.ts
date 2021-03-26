@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { SubirArchivoService } from '../subir-archivo/subir-archivo.service';
 import { Observable, throwError } from 'rxjs';
+import { Medico } from 'src/app/models/medico.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -26,6 +27,30 @@ export class UsuarioService {
   //Si esta logeado, tiene un token
   estaLogueado(){
     return (this.token.length > 5)? true : false;
+  }
+
+  //Renovar token
+  renuevaToken(){
+
+    let url = URL_SERVICIOS + '/login/renuevaToken';
+    url += '?token=' + this.token;
+
+    return this.http.get( url ).pipe(
+      map((resp:any)=>{
+        //asignamos nuestra variable token
+        this.token = resp.token;
+        //y lo mandamos al localStorage
+        localStorage.setItem('token',this.token);
+
+        return true;
+      }),
+      catchError((err:any) =>{
+        //Si hay un error en la renovacion, sacamos al usuario
+        this.router.navigate(['/login']);
+        Swal.fire('No se pudo renovar token','ERROR', 'warning');
+        return Observable.throw(err);
+      })
+    );
   }
 
   cargarStorage(){
